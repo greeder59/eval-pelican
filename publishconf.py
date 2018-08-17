@@ -10,11 +10,13 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'localhost:'
+SITEURL = 'greeder59-eval-pelican.netlify.com'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+
 
 DELETE_OUTPUT_DIRECTORY = True
 

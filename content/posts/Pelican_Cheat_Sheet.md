@@ -7,11 +7,11 @@ Modified: 2018-08-10
 ## Introduction
 These are the steps to create a web site using the Pelican static web site tool and host it on Netlify. The setup is a bit long and may look complicated. That is because I simplify nothing. Not only will we use Pelican, I will take you through setting up and using a Python virtual environment, setting up and using git revision control. Once we get past the setup, Pelican is an easy to use tool. Among other things, it gives you the ability to separate the tasks of site design and layout from content creation. Furthermore, changes to the site design can be made without affecting content, and vice versa.
 
-First off: all this is done on a Linux system. Although things will be simular on a Macbook. If you are a Windows user... uh, dude, If you are going to be a developer you really need to learn to use a real computer. 
+First off: all this is done on a Linux system. Although things will be similar on a Macbook. If you are a Windows user... uh, dude, If you are going to be a developer you really need to learn to use a real computer. 
 
 In the instructions below, the final web site and project are named eval-pelican. I will use the word *you* a lot as a stand in for your username. IE: /home/*you*/Documents to refer to your Documents folder on your system. Replace *you* with your own username.
 
-I also assume that you know how to open and use a command line terminal. The indented lines below are commands that are entered in a terminal window. The '$' is the prompt and shouldn't be entered. Your prompt string will be different, but it will end with a '$'.
+I also assume that you know how to open and use a command line terminal. The indented lines below are commands that are entered in a terminal window. The '$' is the prompt and should't be entered. Your prompt string will be different, but it will end with a '$'.
 
 How it all works:
 
@@ -19,7 +19,7 @@ How it all works:
  - With all the tools installed, you will setup your project folder, setup a few basic configuration files and install Pelican.
  - And that's about where i'm going leave it.  In the next part you will use markdown and pelican to create a basic web site with some initial content.
  - After checking the web site on the local machine, you will commit the site to git and push it to github.
- - Then you'll head over to Netlify and sign up for a free hosting account and link it to Github for continous deployment.
+ - Then you'll head over to Netlify and sign up for a free hosting account and link it to Github for continuous deployment.
 
 ---
 ## Getting set up
@@ -32,7 +32,7 @@ It will probably come up with a version of Python2. Python3 is probably also ins
 If for some reason you need to install python:
 >$ sudo apt-get install python3.6
 
-**pip and virtualenv** Pip is the Python package installer, it should have been installed with Python. Virtualenv is the Python virtual environment tool. It creates a controlled environment on a per project basis that keeps your project dependancies separate from each other.
+**pip and virtualenv** Pip is the Python package installer, it should have been installed with Python. Virtualenv is the Python virtual environment tool. It creates a controlled environment on a per project basis that keeps your project dependencies separate from each other.
 >$ sudo apt-get install python-pip python-virtualenv
 
 **Git** is a revision control system. **Github** is a web site that works with git. We will use git to push our project to a github repository. Netlify will then use that repository to support their deployment. It's really quite slick. Install Git if you don't have it.
@@ -48,7 +48,7 @@ You need to do this only once if you pass the --global option, because then Git 
 
 **Markdown** is a simple text formatting language. You will use it to create content for your web site.  If you have Ubuntu, you will find the re-text markdown editor in the software center. You could just use your GUI text editor (Mousepad or Gedit), but, re-text provides a nice preview feature and syntax highlighting.  
 
-**Code editor** You will need this specialized editor to create and modify your pade design files like HTML templates, and CSS style sheets. Although you can use a simple text editor, a code editor provides extra functionality that makes producing code easier. Here are three good ones:
+**Code editor** You will need this specialized editor to create and modify your page design files like HTML templates, and CSS style sheets. Although you can use a simple text editor, a code editor provides extra functionality that makes producing code easier. Here are three good ones:
 [Gedit](https://wiki.gnome.org/Apps/Gedit#Download), [Sublime Text 3](https://www.sublimetext.com/3), and [Atom](https://atom.io/). Click on the links for download and install instructions.
 
 You will notice that you have not yet installed the Pelican site generator tool. That will happen shortly.
@@ -79,7 +79,7 @@ Now you can install the Pelican and Markdown packages as usual. But, instead of 
 
 **Housekeeping**
 
-To keep your environment consistent, it’s a good idea to “freeze” the current state of the environment packages. You do this by creating a requirements.txt file. This file has many uses. But, as far as you are concerned, It is need to tell netlify which packeges to load when they build the site. To do this, run:
+To keep your environment consistent, it’s a good idea to “freeze” the current state of the environment packages. You do this by creating a requirements.txt file. This file has many uses. But, as far as you are concerned, It is need to tell netlify which packages to load when they build the site. To do this, run:
 >$ pip freeze > requirements.txt
 
 Next, you need to create a few housekeeping files.
@@ -88,7 +88,7 @@ Use your favorite text editor (not word processor!) to create each of the files 
 
 *ReadMe.md* is not used by any tool in the project. Although Github will want to see it. It is a place for you to keep notes and instructions for others. For now, just put "Hey look! I'm building a web site!" in it.
 
-*.gitignore* is used to tell the git revision control system to ignore certian files. For instance, you don't want to put the virtual environment folder under git control. Add the folowing lines to .gitignore:
+*.gitignore* is used to tell the git revision control system to ignore certain files. For instance, you don't want to put the virtual environment folder under git control. Add the following lines to .gitignore:
 ```
 output/*
 *.py[cod]
@@ -100,7 +100,7 @@ Please notice the 3rd line. It is the name of your virtual environment folder. I
 
 *runtime.txt* is used to tell Netlify which version of Python to use when building the site. Netlify currently supports versions 2.7, 3.4, 3.5, and 3.6. Put the version number (just the number) in this file. This number should match the version number of Python in your virtual environment.
 
-*requirments.txt* Already exists. You made it with *pip freeze*. But, if you are using Ubuntu you have to edit this file to deal with a bug. Look for this line in the file: *pkg-resources==0.0.0*. and delete it. 
+*requirements.txt* Already exists. You made it with *pip freeze*. But, if you are using Ubuntu you have to edit this file to deal with a bug. Look for this line in the file: *pkg-resources==0.0.0*. and delete it. 
 
 **git**
 
@@ -118,7 +118,7 @@ Everything past the http is the link that Github provided to you right after you
 
 **Pelican**
 
-Alright! with all that out of the way it's finaly time to run Pelican.
+Alright! with all that out of the way it's finally time to run Pelican.
 Make sure that your virtual environment is active and you are in the root of your project folder, then run:
 >$ pelican-quickstart
 
@@ -139,7 +139,7 @@ eval_pelican/
 With the initial file structure for your project created, and all the initial housekeeping out of the way, lets commit everything to revision control. It may seem strange to do that now. After all, you havn't done any actual work. But, by doing it now, you save a copy of the original files. Then, if ever you completely munge up a file, you can reach back into the repository and retrieve the original version. So let's do that now. First check the status of your files.
 >$ git status
 
-Git will spit out a list of files. At this point, all the files are reported as untracked, meaning that git is not keeping track of revisions on any of them (yet). Look at that list. MAKE DAMN SURE THAT YOUR *VIRTUAL ENVIRONMENT FOLDER* IS NOT ON THE LIST. I can not empisise that enough. If a file is listed in the .gitignore file, git will be ignoreing it and it won't appear here. If it does, then git is not ignoring it and you need to correct your .gitignore file. 
+Git will spit out a list of files. At this point, all the files are reported as untracked, meaning that git is not keeping track of revisions on any of them (yet). Look at that list. MAKE DAMN SURE THAT YOUR *VIRTUAL ENVIRONMENT FOLDER* IS NOT ON THE LIST. I can not emphasis that enough. If a file is listed in the .gitignore file, git will be ignoring it and it won't appear here. If it does, then git is not ignoring it and you need to correct your .gitignore file. 
 
 Once you are happy with your git status, you need to tell git to start tracking the files. Again, make sure that the files in the *git status* output are all the files, and nothing but the files, that you want to track. Then do:
 >$ git add .
@@ -149,7 +149,7 @@ Yes, you must include that dot at the end of the command. It means "all the file
 
 Whenever you do a commit, you need to provide a comment about what changes you made since the last commit. That is what the -m"This is the initial commit" is all about. For future commits you will want to change that to something like: "Changed typografy and layout to improve readability" or "Added article Well, A Special Article"
 
-Whew! That's about enough for now. At this point you have installed the necessary development tools. Set up a project under a virtual Python environment. You have created the skeleton of your web site and placed it under revisoin control. 
+Whew! That's about enough for now. At this point you have installed the necessary development tools. Set up a project under a virtual Python environment. You have created the skeleton of your web site and placed it under revision control. 
 At this point you have reach a fork in the road. You can either start creating content, or you can work on the design, layout and style of the web site. Although, Pelican has installed a simple default design.  I'll leave you with some reference information so that you can look deeper into the tools you have installed. In future articles I'll go into creating content and deploying the site to a web server.
 
 ---
@@ -164,10 +164,10 @@ Create a virtual environment for your project. If you haven't already done so, c
 Or you can specify the Python interpreter of your choice (like python3.5.2).
 >$ virtualenv -p /usr/bin/python[v.r] [environment name]
 
-*virtualenv project* will create a folder in the current directory which will contain the Python executable files, and a copy of the pip library which you can use to install other packages. The name of the virtual environment can be anything; omitting the name will place the files in the current directory instead.
+*virtualenv [environment name]* will create a folder in the current directory which will contain the Python executable files, and a copy of the pip library which you can use to install other packages. The name of the virtual environment can be anything; omitting the name will place the files in the current directory instead.
 
 You need to activate the virtualenv to use it:
->$ source project/bin/activate
+>$ source [environment name]/bin/activate
 
 You can install packages as usual
 >$ pip install pelican Markdown typography
@@ -175,7 +175,7 @@ You can install packages as usual
 In order to keep your environment consistent, it’s a good idea to “freeze” the current state of the environment packages. To do this, run:
 >$ pip freeze > requirements.txt
 
-Requirements.txt is required for the Netlify Continous Deployment feature. Except that there is a bug in Ubuntu. So open the requirements.txt file in a text editor and remove the line: *pkg-resources==0.0.0*.  it doesn't do anything except mess up Netlify.
+Requirements.txt is required for the Netlify Continuous Deployment feature. Except that there is a bug in Ubuntu. So open the requirements.txt file in a text editor and remove the line: *pkg-resources==0.0.0*.  it doesn't do anything except mess up Netlify.
 
 Here is a line to add to the Make file so that you have a 'make freeze' command.
 ```
@@ -193,7 +193,7 @@ Visit [This site](https://docs.python-guide.org/dev/virtualenvs/) for more infor
 
 ---
 ## GIT reference
-Git is a version control system that will keep a history of the changes to our project. It allows easy backup, restore, rollbaks, and more. You can also use it to push a copy of our projects to other machines (IE: a web server). Git is needed to use Github. You need Github for GH-pages or Netlify Continous Deployment.
+Git is a version control system that will keep a history of the changes to our project. It allows easy backup, restore, rollbacks, and more. You can also use it to push a copy of our projects to other machines (IE: a web server). Git is needed to use Github. You need Github for GH-pages or Netlify Continuous Deployment.
 
 Install git:
 >$ sudo apt install git

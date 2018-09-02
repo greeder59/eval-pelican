@@ -42,6 +42,8 @@ If you like the new look of your site, you can make it permanent by specifying t
 
 It's that easy.
 
+You can have as many themes as you like. Just give each theme its own folder under the themes folder.
+
 ---
 ## Modifications
 
@@ -51,14 +53,72 @@ Pelican comes with two built in themes. You have been using one already. It is t
 
 >project/env/lib/python3.5/site-packages/pelican/themes/notmyidea/
 
-You will also find another theme named *simple*. I have pulled both *notmyidea* and *simple* into the themes folder of the repository to make it easy to modify or edit. There is also another theme named *css_only*. It is explained in the Pelican documentation section on [Creating themes](http://docs.getpelican.com/en/stable/themes.html).
+You will also find another theme named *simple*. I have pulled both *notmyidea* into the themes folder of the repository to make it easy to examine, modify or edit. There is also another theme I created named *css_only*. It is explained in the Pelican documentation section on [Creating themes](http://docs.getpelican.com/en/stable/themes.html).
 
 Teaching you HTML, CSS, and Jinja templates is well beyond the scope of this tutorial. 
 
  - Go to [W3schools](https://www.w3schools.com/) site for in depth tutorials on HTML and CSS. 
  - The [Jinja](http://jinja.pocoo.org/) web site has extensive documentation on the Jinja template language.
- - Jinja templates are used in other web building tools such as Flask. Be sure to look around for more ideas.
+ - Jinja templates are used in other web building tools such as Jango and Flask. Be sure to look around for more ideas.
 
+### Creating a custom theme
+
+Starting a new theme from scratch can be quite daunting. So let's build a theme on something simple. The Simple theme.
+
+Go into your virtual environment folder and find the simple theme. It is at: project/env/lib/python3.5/site-packages/pelican/themes/simple/
+
+Copy it to your project's theme folder.  Rename the folder to *my_simple*. Open the folder and notice that it only has templates. So, create a folder named *static*. 
+
+Now create a CSS file for your new theme by copying and pasting the following text into a text editor and save it as *style.css* in the static folder you just created.
+
+```
+body {
+    font-family : monospace ;
+    font-size : 100% ;
+    background-color : white ;
+    color : #111 ;
+    width : 80% ;
+    min-width : 400px ;
+    min-height : 200px ;
+    padding : 1em ;
+    margin : 5% 10% ;
+    border : thin solid gray ;
+    border-radius : 5px ;
+    display : block ;
+}
+
+a:link    { color : blue ; text-decoration : none ;      }
+a:hover   { color : blue ; text-decoration : underline ; }
+a:visited { color : blue ;                               }
+
+h1 a { color : inherit !important }
+h2 a { color : inherit !important }
+h3 a { color : inherit !important }
+h4 a { color : inherit !important }
+h5 a { color : inherit !important }
+h6 a { color : inherit !important }
+
+pre {
+    margin : 2em 1em 2em 4em ;
+}
+
+#menu li {
+    display : inline ;
+}
+
+#post-list {
+    margin-bottom : 1em ;
+    margin-top : 1em ;
+}
+```
+
+Now we need to link style.css to the templates. Find *base.html* in *my_simple/templates*. Open it in your code editor and add the following line near the top of the file, right after the line that with *block head* in it.
+
+```
+ <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/style.css" />
+```
+At this point you have built a simple theme with all the required templates and a simple style sheet. 
+ 
 
 ---
 ## Pelicanconf Modifications
@@ -69,7 +129,7 @@ There are a number of things you can do with your site simply by modifying pelic
  - Simularly, if you are not using tags. TAG_SAVE_AS = ''
  - While you are experimenting with themes you may see some unusual results. Try: LOAD_CONTENT_CACHE = False DELETE_OUTPUT_DIRECTORY = True
  - If the site is connected to github: GITHUB_URL = 'http://github.com/you/' to make a github ribbon.
- - If you want longer article summaries on your pages: SUMMARY_MAX_LENGTH = 50. Or larger.
+ - If you want longer article summaries on your pages increase the value of: SUMMARY_MAX_LENGTH.
 
 
 

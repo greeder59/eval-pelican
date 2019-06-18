@@ -8,6 +8,8 @@ SITEURL = ''
 
 PATH = 'content'
 
+THEME = "themes/my_simple"
+
 
 LOAD_CONTENT_CACHE = False
 DELETE_OUTPUT_DIRECTORY = True
@@ -15,6 +17,7 @@ DELETE_OUTPUT_DIRECTORY = True
 #AUTHOR_SAVE_AS = ''
 TAG_SAVE_AS = ''
 
+#ARTICLE_ORDER_BY = 'date'
 
 TIMEZONE = 'America/Los_Angeles'
 

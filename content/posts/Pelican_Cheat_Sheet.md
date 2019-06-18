@@ -4,7 +4,6 @@ Date: 2018-08-09
 Modified: 2018-08-10
 
 
-## Introduction
 These are the steps to create a web site using the Pelican static web site tool and host it on Netlify. The setup is a bit long and may look complicated. That is because I simplify nothing. Not only will we use Pelican, I will take you through setting up and using a Python virtual environment, setting up and using git revision control. Once we get past the setup, Pelican is an easy to use tool. Among other things, it gives you the ability to separate the tasks of site design and layout from content creation. Furthermore, changes to the site design can be made without affecting content, and vice versa.
 
 First off: all this is done on a Linux system. Although things will be similar on a Macbook. If you are a Windows user... uh, dude, If you are going to be a developer you really need to learn to use a real computer. 
@@ -74,7 +73,7 @@ Now you need to activate the virtualenv to use it:
 You will see that the name of the virtual environment is now shown within prenthesis in the command prompt.
 
 Now you can install the Pelican and Markdown packages as usual. But, instead of being installed as system wide resource they will be installed in the local virtual environment.
->$ pip install pelican Markdown
+>$ pip install pelican markdown
 
 
 **Housekeeping**

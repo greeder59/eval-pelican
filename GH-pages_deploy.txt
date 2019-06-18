@@ -1,0 +1,28 @@
+Updateing and Deploying on GH pages.
+
+1 Activate the V-env
+
+2 Update pip: pip install -U pip
+
+3 Update pip installed packages: pip freeze — local | grep -v ‘^\-e’ | cut -d = -f 1 | xargs -n1 pip install -U
+
+4 Refreeze pip: pip freeze > requirements.txt
+
+5 Fix the pkg-resources bug: nano requirements.txt
+     remove the pkg-resources line.
+
+6 install ghp-import: pip install ghp-import
+
+  Change SITEURL: edit publishconf.py.
+  Add THEME: edit pelicanconf.py.
+
+7  Publish the output:
+	$ pelican content -o output -s publishconf.py
+	$ ghp-import output
+	$ git push origin gh-pages
+
+
+8 Setup Github to host: Settings -> Github pages -> gh-pages branch.
+
+Still to do: cleanup commit and push. Then rebuild with publish.conf and ghp-import.
+

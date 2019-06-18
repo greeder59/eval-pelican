@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-          <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+          <link rel="stylesheet" type="text/css" href="https://greeder59.github.io/eval-pelican/theme/style.css" />
         <title>eval-pelican</title>
         <meta charset="utf-8" />
 
@@ -11,18 +11,18 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">eval-pelican <strong></strong></a></h1>
+                <h1><a href="https://greeder59.github.io/eval-pelican/">eval-pelican <strong></strong></a></h1>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
-            <li><a href="/pages/about-me.html">About me</a></li>
-            <li><a href="/category/gardening.html">Gardening</a></li>
-            <li class="active"><a href="/category/pelican.html">Pelican</a></li>
+            <li><a href="https://greeder59.github.io/eval-pelican/pages/about-me.html">About me</a></li>
+            <li><a href="https://greeder59.github.io/eval-pelican/category/gardening.html">Gardening</a></li>
+            <li class="active"><a href="https://greeder59.github.io/eval-pelican/category/pelican.html">Pelican</a></li>
  
         </ul></nav><!-- /#menu -->
 <section id="content" class="body">
   <header>
     <h2 class="entry-title">
-      <a href="/pelican-startup-guide.html" rel="bookmark"
+      <a href="https://greeder59.github.io/eval-pelican/pelican-startup-guide.html" rel="bookmark"
          title="Permalink to Pelican Startup Guide">Pelican Startup Guide</a></h2>
  
   </header>
@@ -34,7 +34,7 @@
       Fri 10 August 2018
     </time>
     <address class="vcard author">
-      By           <a class="url fn" href="/author/gordon-reeder.html">Gordon Reeder</a>
+      By           <a class="url fn" href="https://greeder59.github.io/eval-pelican/author/gordon-reeder.html">Gordon Reeder</a>
     </address>
   </footer><!-- /.post-info -->
   <div class="entry-content">
@@ -105,7 +105,7 @@
 <p>You will see that the name of the virtual environment is now shown within prenthesis in the command prompt.</p>
 <p>Now you can install the Pelican and Markdown packages as usual. But, instead of being installed as system wide resource they will be installed in the local virtual environment.</p>
 <blockquote>
-<p>$ pip install pelican Markdown</p>
+<p>$ pip install pelican markdown</p>
 </blockquote>
 <p><strong>Housekeeping</strong></p>
 <p>To keep your environment consistent, it’s a good idea to “freeze” the current state of the environment packages. You do this by creating a requirements.txt file. This file has many uses. But, as far as you are concerned, It is need to tell netlify which packages to load when they build the site. To do this, run:</p>
@@ -116,10 +116,10 @@
 <p>Use your favorite text editor (not word processor!) to create each of the files below. Add the content or make the edits below and save the files into the project directory.</p>
 <p><em>ReadMe.md</em> is not used by any tool in the project. Although Github will want to see it. It is a place for you to keep notes and instructions for others. For now, just put "Hey look! I'm building a web site!" in it.</p>
 <p><em>.gitignore</em> is used to tell the git revision control system to ignore certain files. For instance, you don't want to put the virtual environment folder under git control. Add the following lines to .gitignore:</p>
-<div class="highlight"><pre><span></span>output/*
-*.py[cod]
-project/
-develop_server.sh
+<div class="highlight"><pre><span></span><span class="k">output</span><span class="cm">/*</span>
+<span class="cm">*.py[cod]</span>
+<span class="cm">project/</span>
+<span class="cm">develop_server.sh</span>
 </pre></div>
 
 
@@ -146,14 +146,14 @@ Make sure that your virtual environment is active and you are in the root of you
 </blockquote>
 <p>Answer the questions in the script that follows. You can mostly just accept the defaults.
 This will create a basic skeleton site. You will see several new files and folders have been add to your project.</p>
-<div class="highlight"><pre><span></span>eval_pelican/
-├── content
-├── output
-├── develop_server.sh
-├── fabfile.py
-├── Makefile
-├── pelicanconf.py       # Main settings file
-└── publishconf.py       # Settings to use when ready to publish
+<div class="highlight"><pre><span></span><span class="n">eval_pelican</span><span class="o">/</span>
+<span class="err">├──</span> <span class="n">content</span>
+<span class="err">├──</span> <span class="k">output</span>
+<span class="err">├──</span> <span class="n">develop_server</span><span class="p">.</span><span class="n">sh</span>
+<span class="err">├──</span> <span class="n">fabfile</span><span class="p">.</span><span class="n">py</span>
+<span class="err">├──</span> <span class="n">Makefile</span>
+<span class="err">├──</span> <span class="n">pelicanconf</span><span class="p">.</span><span class="n">py</span>       <span class="o">#</span> <span class="n">Main</span> <span class="n">settings</span> <span class="n">file</span>
+<span class="err">└──</span> <span class="n">publishconf</span><span class="p">.</span><span class="n">py</span>       <span class="o">#</span> <span class="n">Settings</span> <span class="k">to</span> <span class="n">use</span> <span class="k">when</span> <span class="n">ready</span> <span class="k">to</span> <span class="n">publish</span>
 </pre></div>
 
 
@@ -236,17 +236,17 @@ When you create a repository with github, it will give you a cut-and-paste http 
 <p>[site URL] is the link that Github gave you when you created the repository.</p>
 <h3>Using git</h3>
 <p>First, create a text file called .gitignore. Place it in the eval-pelican project folder.</p>
-<div class="highlight"><pre><span></span>#ignore the output folder. Netlify will rebuild the site on their servers from the content folder.
-output/*
+<div class="highlight"><pre><span></span><span class="n">#ignore</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="n">folder</span><span class="p">.</span><span class="w"> </span><span class="n">Netlify</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">rebuild</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">site</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="n">folder</span><span class="p">.</span><span class="w"></span>
+<span class="k">output</span><span class="cm">/*</span>
 
-#ignore python cache etc files.
-*.py[cod]
+<span class="cm">#ignore python cache etc files.</span>
+<span class="cm">*.py[cod]</span>
 
-#keep your virtual environment out of the repository
-project/ 
+<span class="cm">#keep your virtual environment out of the repository</span>
+<span class="cm">project/ </span>
 
-#No need to track this.
-develop_server.sh
+<span class="cm">#No need to track this.</span>
+<span class="cm">develop_server.sh</span>
 </pre></div>
 
 
@@ -304,14 +304,14 @@ develop_server.sh
 </blockquote>
 <p>Answer the questions in the script that follows. You can mostly just accept the defaults.
 This will create this basic skeleton site.</p>
-<div class="highlight"><pre><span></span>eval_pelican/
-├── content
-├── output
-├── develop_server.sh
-├── fabfile.py
-├── Makefile
-├── pelicanconf.py       # Main settings file
-└── publishconf.py       # Settings to use when ready to publish
+<div class="highlight"><pre><span></span><span class="n">eval_pelican</span><span class="o">/</span>
+<span class="err">├──</span> <span class="n">content</span>
+<span class="err">├──</span> <span class="k">output</span>
+<span class="err">├──</span> <span class="n">develop_server</span><span class="p">.</span><span class="n">sh</span>
+<span class="err">├──</span> <span class="n">fabfile</span><span class="p">.</span><span class="n">py</span>
+<span class="err">├──</span> <span class="n">Makefile</span>
+<span class="err">├──</span> <span class="n">pelicanconf</span><span class="p">.</span><span class="n">py</span>       <span class="o">#</span> <span class="n">Main</span> <span class="n">settings</span> <span class="n">file</span>
+<span class="err">└──</span> <span class="n">publishconf</span><span class="p">.</span><span class="n">py</span>       <span class="o">#</span> <span class="n">Settings</span> <span class="k">to</span> <span class="n">use</span> <span class="k">when</span> <span class="n">ready</span> <span class="k">to</span> <span class="n">publish</span>
 </pre></div>
 
 

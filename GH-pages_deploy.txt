@@ -1,6 +1,6 @@
 Updateing and Deploying on GH pages.
 
-1 Activate the V-env
+1 Activate the V-env: source eval-env/bin/activate
 
 2 Update pip: pip install -U pip
 
@@ -13,16 +13,26 @@ Updateing and Deploying on GH pages.
 
 6 install ghp-import: pip install ghp-import
 
-  Change SITEURL: edit publishconf.py.
+7  Change SITEURL: edit publishconf.py.
   Add THEME: edit pelicanconf.py.
+
+
+7.1 Build for preview:
+  $ pelican content -o output -s pelicanconf.py
+  $ python -m http.server
+
+8 Commit changes and push master branch
+   $ git status
+   $ git add *
+   $ git commit -m"comment"
+   $ git push origin master
 
 7  Publish the output:
 	$ pelican content -o output -s publishconf.py
 	$ ghp-import output
 	$ git push origin gh-pages
 
-
 8 Setup Github to host: Settings -> Github pages -> gh-pages branch.
 
-Still to do: cleanup commit and push. Then rebuild with publish.conf and ghp-import.
+9 Site is at: https://greeder59.github.io/eval-pelican/
 

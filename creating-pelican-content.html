@@ -35,19 +35,19 @@
     </address>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>In a previous article I showed you how to set up a basic Pelican static web site generator. If you followed that article, you installed some basic system tools, and setup your project. But, I never got around to telling you how to actually create the web site. In this article I'll rectify that. Here I will show you how to create content (IE: articles, blog posts, etc) for your site.</p>
-<p>But wait! What about style sheets, headers, sidebars, menus?  Fortunately, you can ignore all that for now. Pelican has installed a simple startup theme for your site. You can use that for now. Let's get started.</p>
+    <p>In a previous article I showed you how to set up a basic Pelican static web site generator. If you followed that article, you installed some basic system tools, and setup your project. But, I never got around to explaining how to actually create the web site. In this article I'll rectify that. Here I will go into how to create content (IE: articles, blog posts, etc) for the site.</p>
+<p>But wait! What about style sheets, headers, sidebars, menus?  Fortunately, you can ignore all that for now. Pelican has installed a simple startup theme for the site. You can use that for now. Let's get started.</p>
 <hr>
 <h2>Write an Article</h2>
-<p>Fire up the re-Text editor that you installed in part 1. Before you start in on the article, you need to add some Metadata tags to your article:</p>
+<p>Fire up the re-Text editor installed in part 1. Before you start in on the article, add some Metadata tags to your article:</p>
 <div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">first</span> <span class="n">Article</span>
 <span class="n">Category</span><span class="o">:</span> <span class="n">General</span>
 <span class="n">Date</span><span class="o">:</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">11</span>
 </pre></div>
 
 
-<p>Only the title is mandatory. Without it your site build will fail. As you create more and more content for your great web site, your readers will find it hard to find what they are looking for. The category tag will help gather your articles together into meaningful groups. The date tag is formatted as <em>yyyy-mm-dd</em>. You can optionally include a time <em>yyyy-mm-dd hh:mm</em>.  There are other tags, but this is good for now.</p>
-<p>These tags go at the very top of the article. Leave at least one blank line beneath them and begin to wax eloquent about a subject that is near and dear to your heart. As your are writing, refer to the markdown reference section below for information on how to include formatting for your text.</p>
+<p>Only the title is mandatory. Without it the site build will fail. As you create more and more content for your great web site, your readers will find it hard to find what they are looking for. The category tag will help gather your articles together into meaningful groups. The date tag is formatted as <em>yyyy-mm-dd</em>. You can optionally include a time <em>yyyy-mm-dd hh:mm</em>.  There are other tags, but this is good for now.</p>
+<p>These tags go at the very top of the article. Leave at least one blank line beneath them and begin to wax eloquent about a subject that is near and dear to your heart. As you're writing, refer to the markdown reference section below for information on how to include formatting for your text.</p>
 <p>re-Text has a preview button that you can click to check on how your formatting will look, sort of. re-Text doesn't have access to your css files, so it can't format its preview exactly. But it will give you a good indication of the flow.</p>
 <p>When you are done, save the file to Pelican's content directory. Then get it under revision control:</p>
 <blockquote>
@@ -69,13 +69,13 @@
 </blockquote>
 <p>Once the basic server has been started, you can preview your site in your web browser. Startup your browser and put in <em>http://localhost:8000/</em> as the URL.</p>
 <hr>
-<h2>Deploy your site.</h2>
-<p>This is all nice. But so far only you can view your hard work. To share it with the world you need to deploy it to a web host. In this case I'll show you how to deploy to <a href="https://www.netlify.com">Netlify</a>. The normal way to deploy your static site is to push the contents of the output folder to your web host. Netlify does things a little differently. You push the source to Github then Netlify will pull it in and run Pelican to generate the static files on their servers.</p>
-<p>Since Netlify will build your site from github, make sure your git repository is all up to date with:</p>
+<h2>Deploy the site.</h2>
+<p>This is all nice. But so far only you can view your hard work. To share it with the world you need to deploy it to a web host. In this case I'll show you how to deploy to <a href="https://www.netlify.com">Netlify</a>. The normal way to deploy a static site is to push the contents of the output folder to a web host. Netlify does things a little differently. You push the source to Github then Netlify will pull it in and run Pelican to generate the static files on their servers.</p>
+<p>Since Netlify will build the site from github, make sure the git repository is all up to date with:</p>
 <blockquote>
 <p>$ git status</p>
 </blockquote>
-<p>It should show everything up to date. So push your repository to github:</p>
+<p>It should show everything up to date. So push the repository to github:</p>
 <blockquote>
 <p>$ git push origin master</p>
 </blockquote>
@@ -85,8 +85,8 @@
 <li>I had the wrong info in the runtime file</li>
 <li>There was a bug in the requirements.txt file. I warned you about it in the first article.</li>
 </ul>
-<p>Google is your friend. Others have been down this road before you and have documented their experience. Don't be afraid to reach out to the Netlify support team. If your site fails to deploy, you will get an e-mail from them. </p>
-<p>If (When) all goes well, go back to the Netlify site overview page and click the Site Settings tag. Look for the Change site name button and change the name of your site.</p>
+<p>Google is your friend. Others have been down this road before you and have documented their experience. Don't be afraid to reach out to the Netlify support team. If the site fails to deploy, you will get an e-mail from them. </p>
+<p>If (When) all goes well, go back to the Netlify site overview page and click the Site Settings tag. Look for the Change site name button and give the site a better name.</p>
 <hr>
 <h2>Workflow</h2>
 <p>At this point you have a deployed web site, with one article, using the basic Pelican theme. You can continue to add articles to it:</p>
@@ -96,7 +96,7 @@
 <li>Make a commit with <em>git commit -m"Some comment"</em></li>
 <li>Push the commit with <em>git push origin master</em></li>
 </ul>
-<p>That's it. When you do the <em>git push</em> Github will notify Netlify of the change. Then, Netlify will pull the repository and automagicly add the new content to your site.</p>
+<p>That's it. When you do the <em>git push</em>, Github will notify Netlify of the change. Then, Netlify will pull the repository and automagicly add the new content to your site.</p>
 <h3>Drafts</h3>
 <p>There are two ways to deal with content that you are not yet ready to publish.</p>
 <ul>

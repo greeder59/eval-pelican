@@ -2,22 +2,22 @@ Title: Creating Pelican Content
 Category: Pelican
 Date: 2018-08-11
 
-In a previous article I showed you how to set up a basic Pelican static web site generator. If you followed that article, you installed some basic system tools, and setup your project. But, I never got around to telling you how to actually create the web site. In this article I'll rectify that. Here I will show you how to create content (IE: articles, blog posts, etc) for your site.
+In a previous article I showed you how to set up a basic Pelican static web site generator. If you followed that article, you installed some basic system tools, and setup your project. But, I never got around to explaining how to actually create the web site. In this article I'll rectify that. Here I will go into how to create content (IE: articles, blog posts, etc) for the site.
 
-But wait! What about style sheets, headers, sidebars, menus?  Fortunately, you can ignore all that for now. Pelican has installed a simple startup theme for your site. You can use that for now. Let's get started.
+But wait! What about style sheets, headers, sidebars, menus?  Fortunately, you can ignore all that for now. Pelican has installed a simple startup theme for the site. You can use that for now. Let's get started.
 
 ---
 ## Write an Article
-Fire up the re-Text editor that you installed in part 1. Before you start in on the article, you need to add some Metadata tags to your article:
+Fire up the re-Text editor installed in part 1. Before you start in on the article, add some Metadata tags to your article:
 
 ```
 Title: My first Article
 Category: General
 Date: 2018-08-11
 ```
-Only the title is mandatory. Without it your site build will fail. As you create more and more content for your great web site, your readers will find it hard to find what they are looking for. The category tag will help gather your articles together into meaningful groups. The date tag is formatted as *yyyy-mm-dd*. You can optionally include a time *yyyy-mm-dd hh:mm*.  There are other tags, but this is good for now.
+Only the title is mandatory. Without it the site build will fail. As you create more and more content for your great web site, your readers will find it hard to find what they are looking for. The category tag will help gather your articles together into meaningful groups. The date tag is formatted as *yyyy-mm-dd*. You can optionally include a time *yyyy-mm-dd hh:mm*.  There are other tags, but this is good for now.
 
-These tags go at the very top of the article. Leave at least one blank line beneath them and begin to wax eloquent about a subject that is near and dear to your heart. As your are writing, refer to the markdown reference section below for information on how to include formatting for your text.
+These tags go at the very top of the article. Leave at least one blank line beneath them and begin to wax eloquent about a subject that is near and dear to your heart. As you're writing, refer to the markdown reference section below for information on how to include formatting for your text.
 
 re-Text has a preview button that you can click to check on how your formatting will look, sort of. re-Text doesn't have access to your css files, so it can't format its preview exactly. But it will give you a good indication of the flow.
 
@@ -41,14 +41,14 @@ If everything goes well, you can view your site by running a simple HTTP server.
 Once the basic server has been started, you can preview your site in your web browser. Startup your browser and put in *http://localhost:8000/* as the URL.
 
 ---
-## Deploy your site.
+## Deploy the site.
 
-This is all nice. But so far only you can view your hard work. To share it with the world you need to deploy it to a web host. In this case I'll show you how to deploy to [Netlify](https://www.netlify.com). The normal way to deploy your static site is to push the contents of the output folder to your web host. Netlify does things a little differently. You push the source to Github then Netlify will pull it in and run Pelican to generate the static files on their servers.
+This is all nice. But so far only you can view your hard work. To share it with the world you need to deploy it to a web host. In this case I'll show you how to deploy to [Netlify](https://www.netlify.com). The normal way to deploy a static site is to push the contents of the output folder to a web host. Netlify does things a little differently. You push the source to Github then Netlify will pull it in and run Pelican to generate the static files on their servers.
 
-Since Netlify will build your site from github, make sure your git repository is all up to date with:
+Since Netlify will build the site from github, make sure the git repository is all up to date with:
 >$ git status
 
-It should show everything up to date. So push your repository to github:
+It should show everything up to date. So push the repository to github:
 >$ git push origin master
 
 Now click the Netlify link (above), then click the Get Started for Free button and choose Github as your sign up. Follow the signup procedure by allowing Netlify to access your github repository. When asked, type *pelican content* as the build command. If everything works out, you should see Netlify access your github repository and build your site. 
@@ -58,9 +58,9 @@ Did something go wrong? Click on the Deploys tab and select the failed deploy fr
  - I had the wrong info in the runtime file
  - There was a bug in the requirements.txt file. I warned you about it in the first article.
  
-Google is your friend. Others have been down this road before you and have documented their experience. Don't be afraid to reach out to the Netlify support team. If your site fails to deploy, you will get an e-mail from them. 
+Google is your friend. Others have been down this road before you and have documented their experience. Don't be afraid to reach out to the Netlify support team. If the site fails to deploy, you will get an e-mail from them. 
 
-If (When) all goes well, go back to the Netlify site overview page and click the Site Settings tag. Look for the Change site name button and change the name of your site.
+If (When) all goes well, go back to the Netlify site overview page and click the Site Settings tag. Look for the Change site name button and give the site a better name.
 
 ---
 ## Workflow
@@ -72,7 +72,7 @@ At this point you have a deployed web site, with one article, using the basic Pe
  - Make a commit with *git commit -m"Some comment"*
  - Push the commit with *git push origin master*
 
-That's it. When you do the *git push* Github will notify Netlify of the change. Then, Netlify will pull the repository and automagicly add the new content to your site.
+That's it. When you do the *git push*, Github will notify Netlify of the change. Then, Netlify will pull the repository and automagicly add the new content to your site.
 
 
 ### Drafts

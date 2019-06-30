@@ -1,5 +1,6 @@
 output/*
 *.py[cod]
 eval_env/
+drafts/
 develop_server.sh
 

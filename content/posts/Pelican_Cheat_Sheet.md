@@ -4,25 +4,25 @@ Date: 2018-08-09
 Modified: 2018-08-10
 
 
-These are the steps to create a web site using the Pelican static web site tool and host it on Netlify. The setup is a bit long and may look complicated. That is because I simplify nothing. Not only will we use Pelican, I will take you through setting up and using a Python virtual environment, setting up and using git revision control. Once we get past the setup, Pelican is an easy to use tool. Among other things, it gives you the ability to separate the tasks of site design and layout from content creation. Furthermore, changes to the site design can be made without affecting content, and vice versa.
+Pelican is a static web site generator written in Python. It allows you to write content using simple a markup format. The site it creates is completely static making it easy to host anywhere. Before creating a website, there is some setup and configuration needed to create a proper development environment. The setup is a bit long and may look complicated. That is because I simplify nothing. Not only will I setup Pelican, I will be setting up and using a Python virtual environment, setting up and using Git revision control. Once I get past the setup, Pelican is an easy to use tool. Among other things, it gives me the ability to separate the tasks of site design and layout from content creation. Furthermore, changes to the site design can be made without affecting content, and vice versa.
 
 First off: all this is done on a Linux system. Although things will be similar on a Macbook. If you are a Windows user... uh, dude, If you are going to be a developer you really need to learn to use a real computer. 
 
 In the instructions below, the final web site and project are named eval-pelican. I will use the word *you* a lot as a stand in for your username. IE: /home/*you*/Documents to refer to your Documents folder on your system. Replace *you* with your own username.
 
-I also assume that you know how to open and use a command line terminal. The indented lines below are commands that are entered in a terminal window. The '$' is the prompt and should't be entered. Your prompt string will be different, but it will end with a '$'.
+I also assume that you know how to open and use a command line terminal. The indented lines below are commands that are entered in a terminal window. The '$' is the prompt and shouldn't be entered. Your prompt string will be different, but it will end with a '$'.
 
 How it all works:
 
- - First you will install some tools. I'm assuming that you are starting from square one. So you will check the version of Python, install the Python virtual environment and the git version control system.
- - With all the tools installed, you will setup your project folder, setup a few basic configuration files and install Pelican.
- - And that's about where i'm going leave it.  In the next part you will use markdown and pelican to create a basic web site with some initial content.
- - After checking the web site on the local machine, you will commit the site to git and push it to github.
- - Then you'll head over to Netlify and sign up for a free hosting account and link it to Github for continuous deployment.
+ - First I will install some tools. I'm starting from square one. So I will check the version of Python, install the Python virtual environment and the git version control system.
+ - With all the tools installed, I setup the project folder, setup a few basic configuration files and install Pelican.
+ - And that's about where i'm going leave it.  In the next part I will use markdown and pelican to create a basic web site with some initial content.
+ - After checking the web site on my local machine, I will commit the site to git and push it to Github.
+ - Then I'll head over to Netlify and sign up for a free hosting account and link it to Github for continuous deployment.
 
 ---
 ## Getting set up
-First install some tools. **Python:** If you are running a Linux system, it should have Python already preinstalled. Check it by typing:
+First install some tools. **Python:** I'm running a Linux system, it should have Python already pre-installed. I Check it by typing:
 >$ python --version
 
 It will probably come up with a version of Python2. Python3 is probably also installed. Check for it by typing :
@@ -34,32 +34,32 @@ If for some reason you need to install python:
 **pip and virtualenv** Pip is the Python package installer, it should have been installed with Python. Virtualenv is the Python virtual environment tool. It creates a controlled environment on a per project basis that keeps your project dependencies separate from each other.
 >$ sudo apt-get install python-pip python-virtualenv
 
-**Git** is a revision control system. **Github** is a web site that works with git. We will use git to push our project to a github repository. Netlify will then use that repository to support their deployment. It's really quite slick. Install Git if you don't have it.
+**Git** is a revision control system. **Github** is a web site that works with git. I will use git to push the project to a github repository. Netlify will then use that repository to support their deployment. It's really quite slick. To install Git if you don't have it.
 >$ sudo apt install git
 
-The first thing you should do when you install Git is to set your user name and email address. This is important because every Git commit uses this information, and it’s immutably baked into the commits you start creating:
+The first thing that needs to be done after installing Git is to set your user name and email address. This is important because every Git commit uses this information, and it’s immutably baked into the commits are created:
 
 >$ git config --global user.name "John Doe"
 
 >$ git config --global user.email johndoe@example.com
 
-You need to do this only once if you pass the --global option, because then Git will always use that information for anything you do on that system. If you want to override this with a different name or email address for specific projects, you can run the command without the --global option when you’re in that project.
+This needs to be done only once if the --global option is passed, because then Git will always use that information for anything that's done on that system. To override this with a different name or email address for specific projects, run the command without the --global option when you’re in that project.
 
-**Markdown** is a simple text formatting language. You will use it to create content for your web site.  If you have Ubuntu, you will find the re-text markdown editor in the software center. You could just use your GUI text editor (Mousepad or Gedit), but, re-text provides a nice preview feature and syntax highlighting.  
+**Markdown** is a simple text formatting language. It will be used to create content for the web site.  In Ubuntu, you will find the re-text markdown editor in the software center. You could just use your GUI text editor (Mousepad or Gedit), but, re-text provides a nice preview feature and syntax highlighting.  
 
-**Code editor** You will need this specialized editor to create and modify your page design files like HTML templates, and CSS style sheets. Although you can use a simple text editor, a code editor provides extra functionality that makes producing code easier. Here are three good ones:
+**Code editor** This specialized editor is needed to create and modify page design files like HTML templates, and CSS style sheets. Although a simple text editor can be used, a code editor provides extra functionality that makes producing code easier. Here are three good ones:
 [Gedit](https://wiki.gnome.org/Apps/Gedit#Download), [Sublime Text 3](https://www.sublimetext.com/3), and [Atom](https://atom.io/). Click on the links for download and install instructions.
 
-You will notice that you have not yet installed the Pelican site generator tool. That will happen shortly.
+You will notice that the Pelican site generator tool has not yet been installed. That will happen shortly.
 
 ---
 ## Getting started.
-In your Documents or Projects directory, create a folder for the project. Then change into it.
+In the Documents or Projects directory, create a folder for the project. Then change into it.
 >~/Documents$ mkdir eval-pelican
 
 >$ cd eval-pelican
 
-Create a virtual environment for your project.
+Create a virtual environment for the project.
 >$ virtualenv project
 
 Or you can specify the Python interpreter of your choice (like python3.5.2).
@@ -72,18 +72,18 @@ Now you need to activate the virtualenv to use it:
 
 You will see that the name of the virtual environment is now shown within prenthesis in the command prompt.
 
-Now you can install the Pelican and Markdown packages as usual. But, instead of being installed as system wide resource they will be installed in the local virtual environment.
+Now install the Pelican and Markdown packages as usual. But, instead of being installed as system wide resource they will be installed in the local virtual environment. When installing packages in a virtual environment, don't invoke super user privileges. 
 >$ pip install pelican markdown
 
 
 **Housekeeping**
 
-To keep your environment consistent, it’s a good idea to “freeze” the current state of the environment packages. You do this by creating a requirements.txt file. This file has many uses. But, as far as you are concerned, It is need to tell netlify which packages to load when they build the site. To do this, run:
+To keep the environment consistent, it’s a good idea to “freeze” the current state of the environment packages. Do this by creating a requirements.txt file. This file has many uses. But, as far as you are concerned, It is need to tell netlify which packages to load when they build the site. To do this, run:
 >$ pip freeze > requirements.txt
 
-Next, you need to create a few housekeeping files.
+Next, create a few housekeeping files.
 
-Use your favorite text editor (not word processor!) to create each of the files below. Add the content or make the edits below and save the files into the project directory.
+Use a text editor (not word processor!) to create each of the files below. Add the content or make the edits below and save the files into the project directory.
 
 *ReadMe.md* is not used by any tool in the project. Although Github will want to see it. It is a place for you to keep notes and instructions for others. For now, just put "Hey look! I'm building a web site!" in it.
 
@@ -95,7 +95,6 @@ project/
 develop_server.sh
 ```
 Please notice the 3rd line. It is the name of your virtual environment folder. If you named your environment something else, be sure that you have the correct name there.
-
 
 *runtime.txt* is used to tell Netlify which version of Python to use when building the site. Netlify currently supports versions 2.7, 3.4, 3.5, and 3.6. Put the version number (just the number) in this file. This number should match the version number of Python in your virtual environment.
 
@@ -118,11 +117,11 @@ Everything past the http is the link that Github provided to you right after you
 **Pelican**
 
 Alright! with all that out of the way it's finally time to run Pelican.
-Make sure that your virtual environment is active and you are in the root of your project folder, then run:
+Make sure that the virtual environment is active and you are in the root of the project folder, then run:
 >$ pelican-quickstart
 
 Answer the questions in the script that follows. You can mostly just accept the defaults.
-This will create a basic skeleton site. You will see several new files and folders have been add to your project.
+This will create a basic skeleton site. You will see several new files and folders have been added to the project.
 
 ```
 eval_pelican/
@@ -135,21 +134,21 @@ eval_pelican/
 └── publishconf.py       # Settings to use when ready to publish
 ```
 
-With the initial file structure for your project created, and all the initial housekeeping out of the way, lets commit everything to revision control. It may seem strange to do that now. After all, you havn't done any actual work. But, by doing it now, you save a copy of the original files. Then, if ever you completely munge up a file, you can reach back into the repository and retrieve the original version. So let's do that now. First check the status of your files.
+With the initial file structure for the project created, and all the initial housekeeping out of the way, commit everything to revision control. It may seem strange to do that now. After all, you haven't done any actual work. But, by doing it now, you save a copy of the original files. Then, if ever you completely munge up a file, you can reach back into the repository and retrieve the original version. So do that now. First check the status of your files.
 >$ git status
 
-Git will spit out a list of files. At this point, all the files are reported as untracked, meaning that git is not keeping track of revisions on any of them (yet). Look at that list. MAKE DAMN SURE THAT YOUR *VIRTUAL ENVIRONMENT FOLDER* IS NOT ON THE LIST. I can not emphasis that enough. If a file is listed in the .gitignore file, git will be ignoring it and it won't appear here. If it does, then git is not ignoring it and you need to correct your .gitignore file. 
+Git will spit out a list of files. At this point, all the files are reported as untracked, meaning that git is not keeping track of revisions on any of them (yet). Look at that list. MAKE DAMN SURE THAT YOUR *VIRTUAL ENVIRONMENT FOLDER* IS NOT ON THE LIST. I can not emphasis that enough. If a file is listed in the .gitignore file, git will be ignoring it and it won't appear here. If it does, then git is not ignoring it and you need to correct the .gitignore file. 
 
-Once you are happy with your git status, you need to tell git to start tracking the files. Again, make sure that the files in the *git status* output are all the files, and nothing but the files, that you want to track. Then do:
+Once you are happy with the git status, tell git to start tracking the files. Again, make sure that the files in the *git status* output are all the files, and nothing but the files, that you want to track. Then do:
 >$ git add .
 
-Yes, you must include that dot at the end of the command. It means "all the files here". Now, if you do a *git status* you will see all of the files listed again, but they are reported as being staged. This means that they are not yet put in the repository, they are half way there. To get them all the way there, do:
+Yes, you must include that dot at the end of the command. It means "all the files here". Now, if you do a *git status*, all of the files are listed again, but they are reported as being staged. This means that they are not yet put in the repository, they are half way there. To get them all the way there, do:
 >$ git commit -m"This is the initial commit"
 
 Whenever you do a commit, you need to provide a comment about what changes you made since the last commit. That is what the -m"This is the initial commit" is all about. For future commits you will want to change that to something like: "Changed typografy and layout to improve readability" or "Added article Well, A Special Article"
 
-Whew! That's about enough for now. At this point you have installed the necessary development tools. Set up a project under a virtual Python environment. You have created the skeleton of your web site and placed it under revision control. 
-At this point you have reach a fork in the road. You can either start creating content, or you can work on the design, layout and style of the web site. Although, Pelican has installed a simple default design.  I'll leave you with some reference information so that you can look deeper into the tools you have installed. In future articles I'll go into creating content and deploying the site to a web server.
+Whew! That's about enough for now. At this point you have installed the necessary development tools. Set up a project under a virtual Python environment. You have created the skeleton of the web site and placed it under revision control. 
+At this point a fork in the road has been reached. You can either start creating content, or you can work on the design, layout and style of the web site. Although, Pelican comes with a simple default design.  I'll leave you with some reference information so that you can look deeper into the tools that have been installed. In the next article I'll go into creating content and deploying the site to a web server.
 
 ---
 ## virtualenv reference

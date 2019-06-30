@@ -5,7 +5,7 @@ Author: Gordon Reeder
 
 Last year I showed you how I published my Pelican web site to Netlify. Although I am a big fan of Netlify, I decided to investigate some of the many other hosting options. Because the source material for this web site is hosted in a Github repository, it just made sense to keep everything together and host the site on Github as well. Before I get into the details I want to discuss some of the other options.
 
-# Options
+### Options
 
  - **Netlify**. Still a very good option. Free to use. The setup is fairly straight forward and their support staff will help you over any speed bumps you encounter. Deployment is easy because you link to a github repository. To deploy changes you simply push the changes to Github. Netlify is notified of the changes and rebuilds your site. 
  - **AWS**. A popular option. Very low cost for low traffic sites. Setup is easy if you follow an on-line tutorial. But then you are bound to have a few issues that you have to work out yourself. Deploying updates requires visiting the AWS account page.
@@ -16,7 +16,7 @@ Last year I showed you how I published my Pelican web site to Netlify. Although 
 
 
 
-#Updating
+###Updating
 
 It's been a while since I have been here. So I need to update some tools. Open a terminal in the eval-pelican project and activate the virtual environment. Then, update pip:
 >pip install -U pip
@@ -29,13 +29,13 @@ This will generate a lot of output on the screen which can be ignored. When it i
 
 Fix the pkg-resources bug by opening requirements.txt in a text editor (nano will do) and remove the pkg-resources line.
 
-#Github hosting
+###Github hosting
 
-First, what is Github pages. We all know that Github is the most popular software repository. But, it can also host web sites. Think about it; Since Github holds lots of files, some of them can be HTML and CSS files. So it isn't hard to run a web server to serve up those files. That is what Github-pages is all about. In fact, Github works so well as a static site host, it has Jekyll support built in. Pfft! If it works with Jekyll it will work with Pelican. We already have an eval-pelican repository setup. It is in this repository that we will host the web site as a project site.
+First, what is Github pages. We all know that Github is the most popular software repository. But, it can also host web sites. Think about it; Since Github holds lots of files, some of them can be HTML and CSS files. So it isn't hard to run a web server to serve up those files. That is what Github-pages is all about. In fact, Github works so well as a static site host, it has Jekyll support built in. Pfft! If it works with Jekyll it will work with Pelican. I already have an eval-pelican repository setup. It is in this repository that I will host the web site as a project site.
 
-The astute among you will notice that only the site source files are under revision control. The website itself is in the output folder, and that doesn't get pushed to Github. Fortunately, there are others who have gone before us that have solved this problem. The solution is the ghp-import tool. What ghp-import does is to create a gh-pages fork of your repository and then stuff the content of the output folder in it. Github is then told to serve files from the gh-pages fork.
+The astute among you will notice that only the site source files are under revision control. The website itself is in the output folder, and that doesn't get pushed to Github. Fortunately, there are others who have gone before us that have solved this problem. The solution is the ghp-import tool. What ghp-import does is to create a gh-pages fork of the repository and then stuff the content of the output folder in it. Github is then told to serve files from the gh-pages fork.
 
-#Publishing to Github
+###Publishing to Github
 
 First, I checked the status of the repository and added any updated or new files. With the repository up to date, I committed the changes and pushed to the master branch. Github and my local machine were now in sync.
 

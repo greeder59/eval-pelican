@@ -1,5 +1,7 @@
 Updateing and Deploying on GH pages.
 
+What's this? It seems that my notes and cheat sheet are under revision control.
+
 1 Activate the V-env: source eval-env/bin/activate
 
 2 Update pip: pip install -U pip
@@ -23,7 +25,7 @@ Updateing and Deploying on GH pages.
 
 8 Commit changes and push master branch
    $ git status
-   $ git add *
+   $ git add .
    $ git commit -m"comment"
    $ git push origin master
 

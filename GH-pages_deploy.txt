@@ -38,3 +38,31 @@ What's this? It seems that my notes and cheat sheet are under revision control.
 
 9 Site is at: https://greeder59.github.io/eval-pelican/
 
+ === Custom domain name setup ===
+
+10 Register the domain name with Namecheap.
+	In this case, eval-pelican.com
+
+11 Add a custom domain to the Github repository (under settings)
+	www.eval-pelican.com
+
+12 Configure the domain at Namecheap.
+	On the dashboard, click the manage button for the domain.
+	Click on Advanced DNS, then Add New record.
+	Add 5 new records: CNAME: greeder59.github.io. A records: @ 185.199.[108 to 111].153
+	Delete the records that were already there.
+	
+13 Configure Github pages site.
+	Remove and re-add the custom domain to the Github repository.
+	It may take a while, but when it is available, choose HTTPs
+	A CNAME file will be created in the code repository which may or may not cause a problem with ghp-import. Yes it will!
+
+	To use a custom domain with GitHub Pages, you need to put the domain of your site (e.g., blog.example.com) inside a CNAME file at the root of your site. 
+	To do this, create the content/extra/ directory and add a CNAME file to it. 
+	Then use the STATIC_PATHS setting to tell Pelican to copy this file to your output directory. For example:
+
+	STATIC_PATHS = ['images', 'extra/CNAME']
+	EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
+	
+	
+

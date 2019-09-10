@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <link rel="stylesheet" type="text/css" href="https://greeder59.github.io/eval-pelican/theme/style.css" />
+        <title>eval-pelican</title>
+        <meta charset="utf-8" />
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://greeder59.github.io/eval-pelican/">eval-pelican <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="https://greeder59.github.io/eval-pelican/pages/about-me.html">About me</a></li>
+            <li><a href="https://greeder59.github.io/eval-pelican/category/gardening.html">Gardening</a></li>
+            <li class="active"><a href="https://greeder59.github.io/eval-pelican/category/pelican.html">Pelican</a></li>
+ 
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://greeder59.github.io/eval-pelican/we-have-a-custom-domain-name.html" rel="bookmark"
+         title="Permalink to We have a Custom Domain Name!">We have a Custom Domain Name!</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2019-09-09T00:00:00-07:00">
+      Mon 09 September 2019
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://greeder59.github.io/eval-pelican/author/gordon-reeder.html">Gordon Reeder</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>In the last article I showed you how I deployed this site to Github pages. It's easy and it works. But, oh boy, the URL! I just want to be able to go to <em>www.eval-pelican.com</em>, not <em>username.github.io/eval-pelican</em>. Turns out I can. Git hub pages supports the use of custom domains. Even at the free level. It can be a bit confusing to set up because some of the procedures have changed over the years. So make sure you are reading the most up to date documentation. Also, you will have to make setups on two servers; Github and your domain name registrar. Once you get sorted out what changes go where, it all goes quite quickly.
+But first you need to get Github sorted out. Since eval-pelican is project page I can forget about the user/organization page options.  Github supports the use of custom apex domains such as <em>my-domain.com</em>, and sub domains such as <em>www.my-domain.com</em> or <em>blog.my-domain.com</em>. In this case, like most web sites, I'll use the www sub domain.</p>
+<p>The basic steps are as follows:</p>
+<ul>
+<li>Buy a custom domain name from a domain registrar.</li>
+<li>Point the domain nameserver at Github.</li>
+<li>Tell Github about the custom domain name.</li>
+<li>Adjust your project to manage the CNAME file. More about this later.</li>
+</ul>
+<p>Let's get started.</p>
+<h3>Register a domain name</h3>
+<p>Step one is to register a custom domain name with a domain registrar. I used Name Cheap, mostly because I have other domain names registered there. As a bonus, they provide the advanced DNS settings that Github hosting requires. </p>
+<p>Now that <em>eval-pelican.com</em> is mine, I need to head over to Github and tell them about it. On GitHub, navigate to the GitHub Pages site's repository.</p>
+<p>Under your repository name, click Settings on the upper menu bar. </p>
+<p>Once there, scroll down to the 'Custom domain" box. Enter the domain name in there; IE: <em>www.eval-pelican.com</em>. Then click the save button to make it stick. Github will display a yellow warning box. This is OK, it will be fixed later. I have to enter the custom domain at this time to prevent the hosting from being hijacked.</p>
+<h3>Setup the DNS server.</h3>
+<p>Now I'll head back over to Name Cheap and tell it how to direct traffic to eval-pelican. </p>
+<p>On the dashboard, find the line for the new custom domain name. Click the manage button. Then click on Advanced DNS.</p>
+<p>There are two DNS records that point to Name Cheap's default parking page for the domain. I don't need this, so I just delete those two records.</p>
+<p>Add a CNAME record (click Add New Record and choose the CNAME record type). In the host column, enter www. In the value column, enter the old <em>username.github.io</em> gh-pages domain name. Set the TTL (Time To Live) column to 30 min.</p>
+<p>In a similar fashion, add four A records as follows:</p>
+<div class="highlight"><pre><span></span>    <span class="k">Host</span><span class="p">,</span>  <span class="n">Value</span><span class="p">,</span> <span class="n">TTL</span>
+     <span class="o">@</span><span class="p">,</span>  <span class="mi">185</span><span class="p">.</span><span class="mi">199</span><span class="p">.</span><span class="mi">108</span><span class="p">.</span><span class="mi">153</span><span class="p">,</span>  <span class="mi">30</span>
+     <span class="o">@</span><span class="p">,</span>  <span class="mi">185</span><span class="p">.</span><span class="mi">199</span><span class="p">.</span><span class="mi">109</span><span class="p">.</span><span class="mi">153</span><span class="p">,</span>  <span class="n">Automatic</span>
+     <span class="o">@</span><span class="p">,</span>  <span class="mi">185</span><span class="p">.</span><span class="mi">199</span><span class="p">.</span><span class="mi">110</span><span class="p">.</span><span class="mi">153</span><span class="p">,</span>  <span class="n">Automatic</span>
+     <span class="o">@</span><span class="p">,</span>  <span class="mi">185</span><span class="p">.</span><span class="mi">199</span><span class="p">.</span><span class="mi">111</span><span class="p">.</span><span class="mi">153</span><span class="p">,</span>  <span class="n">Automatic</span>
+</pre></div>
+
+
+<p>Save the changes and exit.</p>
+<p>Then I head back over to Github and remove the Custom Domain setting. Then re-enter it. I'm not sure why, but this has to be done to Github whenever changes are made to the DNS server records.</p>
+<p>Test to see if it all works by typing the new domain name into a web browser and see if the site comes up. If it doesn't seem to work at first, just give it time. It can take several hours for DNS changes to propagate. Although, in my case, it only took about 10 minutes.</p>
+<h3>Managing the CNAME file.</h3>
+<p>Well, that's it. Almost. A quick glance at the gh-pages branch of the site repository, reveals that a CNAME file has been added. It was added by Github when the Custom domain setting was entered. And it needs to stay there. The astute among you will notice that this runs counter to the work flow. That is: Pelican creates the output, ghp-import places the output in the gh-pages git branch, Git push sends the branch to Github. With all this there is a risk that the CNAME file could be lost. A modification to the project will allow Pelican to create the CNAME file with each build.</p>
+<p>First, create the content/extra/ directory and add a CNAME file to it. Edit the CNAME file and place the URL of your site IE: <em>www.eval-pelican.com</em>.</p>
+<p>Now tell Pelican where to find this file and to copy it to the output directory by adding the following lines to publishconf.py:</p>
+<div class="highlight"><pre><span></span>    <span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="s1">&#39;extra/CNAME&#39;</span><span class="p">]</span>
+    <span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="err">{</span><span class="s1">&#39;extra/CNAME&#39;</span><span class="p">:</span> <span class="err">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;CNAME&#39;</span><span class="err">}</span><span class="p">,</span><span class="err">}</span>
+</pre></div>
+
+
+<p>And that should be it.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

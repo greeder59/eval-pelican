@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <link rel="stylesheet" type="text/css" href="https://greeder59.github.io/eval-pelican/theme/style.css" />
+        <title>eval-pelican</title>
+        <meta charset="utf-8" />
+
+
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://greeder59.github.io/eval-pelican/">eval-pelican <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="https://greeder59.github.io/eval-pelican/pages/about-me.html">About me</a></li>
+            <li><a href="https://greeder59.github.io/eval-pelican/category/gardening.html">Gardening</a></li>
+            <li class="active"><a href="https://greeder59.github.io/eval-pelican/category/pelican.html">Pelican</a></li>
+ 
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://greeder59.github.io/eval-pelican/pelican-themes.html" rel="bookmark"
+         title="Permalink to Pelican Themes">Pelican Themes</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2018-08-22T00:00:00-07:00">
+      Wed 22 August 2018
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://greeder59.github.io/eval-pelican/author/gordon-reeder.html">Gordon Reeder</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Up until now you have been using the default web design theme that came with Pelican. But, what if you don't like it? Well, you can change it. Changes to the Pelican theme can range from simple tweaks to all out redesign depending on your needs and skill level.</p>
+<p>In this article I'll show you three ways to change the default theme.</p>
+<ul>
+<li>Completely replace the default theme.</li>
+<li>Make simple style changes to the colors and fonts.</li>
+<li>Create a whole new theme from scratch.</li>
+</ul>
+<hr>
+<h2>Housekeeping</h2>
+<p>Before we begin you need to do some housekeeping.</p>
+<ul>
+<li>Open your project folder and create a new directory under content named posts. Move your articles there.</li>
+<li>If you haven't done so already, create a directory named pages in your content directory.</li>
+<li>And, if  you haven't already done so, create a directory called images in your content directory.</li>
+<li>Create a folder in the root of your project directory named themes.</li>
+</ul>
+<hr>
+<h2>Installing a new theme</h2>
+<p>Start by replacing the default theme. </p>
+<ul>
+<li>Head over to <a href="http://www.pelicanthemes.com">pelican themes</a> and browse through the gallery until you find a theme you like.</li>
+<li>Click on the link for the theme to get to the Github repro for the theme. </li>
+<li>Click the <em>Clone or Download</em> button and choose <em>Download zip</em>. The zip file will probably end up in your downloads folder.</li>
+<li>Unzip the downloaded archive and move the resulting folder into your project's <em>theme</em> folder. </li>
+</ul>
+<p>Now, rebuild your site with your new theme.</p>
+<blockquote>
+<p>$ pelican content -t themes/new_theme/</p>
+</blockquote>
+<p>If you like the new look of your site, you can make it permanent by specifying the THEME setting in pelicanconf.py</p>
+<blockquote>
+<p>THEME = themes/new_theme/</p>
+</blockquote>
+<p>It's that easy.</p>
+<p>You can have as many themes as you like. Just give each theme its own folder under the themes folder.</p>
+<hr>
+<h2>Modifications</h2>
+<p>One of the great things about Pelican is the level of creative control you have. Once you have downloaded a theme, it is yours to modify to your hearts content. Or, you can create a new theme from scratch.</p>
+<p>Pelican comes with two built in themes. You have been using one already. It is the default theme. It has a name; Notmyidea. If you want to modify it, make a local copy of it in your project/theme folder. You can find the default theme buried in your virtual environment folder at.</p>
+<blockquote>
+<p>project/env/lib/python3.5/site-packages/pelican/themes/notmyidea/</p>
+</blockquote>
+<p>You will also find another theme named <em>simple</em>. I have pulled both <em>notmyidea</em> into the themes folder of the repository to make it easy to examine, modify or edit. There is also another theme I created named <em>css_only</em>. It is explained in the Pelican documentation section on <a href="http://docs.getpelican.com/en/stable/themes.html">Creating themes</a>.</p>
+<p>Teaching you HTML, CSS, and Jinja templates is well beyond the scope of this tutorial. </p>
+<ul>
+<li>Go to <a href="https://www.w3schools.com/">W3schools</a> site for in depth tutorials on HTML and CSS. </li>
+<li>The <a href="http://jinja.pocoo.org/">Jinja</a> web site has extensive documentation on the Jinja template language.</li>
+<li>Jinja templates are used in other web building tools such as Jango and Flask. Be sure to look around for more ideas.</li>
+</ul>
+<h3>Creating a custom theme</h3>
+<p>Starting a new theme from scratch can be quite daunting. So let's build a theme on something simple. The Simple theme.</p>
+<p>Go into your virtual environment folder and find the simple theme. It is at: project/env/lib/python3.5/site-packages/pelican/themes/simple/</p>
+<p>Copy it to your project's theme folder.  Rename the folder to <em>my_simple</em>. Open the folder and notice that it only has templates. So, create a folder named <em>static</em>. </p>
+<p>Now create a CSS file for your new theme by copying and pasting the following text into a text editor and save it as <em>style.css</em> in the static folder you just created.</p>
+<div class="highlight"><pre><span></span><span class="nt">body</span> <span class="p">{</span>
+    <span class="k">font-family</span> <span class="p">:</span> <span class="kc">monospace</span> <span class="p">;</span>
+    <span class="k">font-size</span> <span class="p">:</span> <span class="mi">100</span><span class="kt">%</span> <span class="p">;</span>
+    <span class="k">background-color</span> <span class="p">:</span> <span class="kc">white</span> <span class="p">;</span>
+    <span class="k">color</span> <span class="p">:</span> <span class="mh">#111</span> <span class="p">;</span>
+    <span class="k">width</span> <span class="p">:</span> <span class="mi">80</span><span class="kt">%</span> <span class="p">;</span>
+    <span class="k">min-width</span> <span class="p">:</span> <span class="mi">400</span><span class="kt">px</span> <span class="p">;</span>
+    <span class="k">min-height</span> <span class="p">:</span> <span class="mi">200</span><span class="kt">px</span> <span class="p">;</span>
+    <span class="k">padding</span> <span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="p">;</span>
+    <span class="k">margin</span> <span class="p">:</span> <span class="mi">5</span><span class="kt">%</span> <span class="mi">10</span><span class="kt">%</span> <span class="p">;</span>
+    <span class="k">border</span> <span class="p">:</span> <span class="kc">thin</span> <span class="kc">solid</span> <span class="kc">gray</span> <span class="p">;</span>
+    <span class="k">border-radius</span> <span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="p">;</span>
+    <span class="k">display</span> <span class="p">:</span> <span class="kc">block</span> <span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span><span class="p">:</span><span class="nd">link</span>    <span class="p">{</span> <span class="k">color</span> <span class="p">:</span> <span class="kc">blue</span> <span class="p">;</span> <span class="k">text-decoration</span> <span class="p">:</span> <span class="kc">none</span> <span class="p">;</span>      <span class="p">}</span>
+<span class="nt">a</span><span class="p">:</span><span class="nd">hover</span>   <span class="p">{</span> <span class="k">color</span> <span class="p">:</span> <span class="kc">blue</span> <span class="p">;</span> <span class="k">text-decoration</span> <span class="p">:</span> <span class="kc">underline</span> <span class="p">;</span> <span class="p">}</span>
+<span class="nt">a</span><span class="p">:</span><span class="nd">visited</span> <span class="p">{</span> <span class="k">color</span> <span class="p">:</span> <span class="kc">blue</span> <span class="p">;</span>                               <span class="p">}</span>
+
+<span class="nt">h1</span> <span class="nt">a</span> <span class="p">{</span> <span class="k">color</span> <span class="p">:</span> <span class="kc">inherit</span> <span class="cp">!important</span> <span class="p">}</span>
+<span class="nt">h2</span> <span class="nt">a</span> <span class="p">{</span> <span class="k">color</span> <span class="p">:</span> <span class="kc">inherit</span> <span class="cp">!important</span> <span class="p">}</span>
+<span class="nt">h3</span> <span class="nt">a</span> <span class="p">{</span> <span class="k">color</span> <span class="p">:</span> <span class="kc">inherit</span> <span class="cp">!important</span> <span class="p">}</span>
+<span class="nt">h4</span> <span class="nt">a</span> <span class="p">{</span> <span class="k">color</span> <span class="p">:</span> <span class="kc">inherit</span> <span class="cp">!important</span> <span class="p">}</span>
+<span class="nt">h5</span> <span class="nt">a</span> <span class="p">{</span> <span class="k">color</span> <span class="p">:</span> <span class="kc">inherit</span> <span class="cp">!important</span> <span class="p">}</span>
+<span class="nt">h6</span> <span class="nt">a</span> <span class="p">{</span> <span class="k">color</span> <span class="p">:</span> <span class="kc">inherit</span> <span class="cp">!important</span> <span class="p">}</span>
+
+<span class="nt">pre</span> <span class="p">{</span>
+    <span class="k">margin</span> <span class="p">:</span> <span class="mi">2</span><span class="kt">em</span> <span class="mi">1</span><span class="kt">em</span> <span class="mi">2</span><span class="kt">em</span> <span class="mi">4</span><span class="kt">em</span> <span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">menu</span> <span class="nt">li</span> <span class="p">{</span>
+    <span class="k">display</span> <span class="p">:</span> <span class="kc">inline</span> <span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">post-list</span> <span class="p">{</span>
+    <span class="k">margin-bottom</span> <span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="p">;</span>
+    <span class="k">margin-top</span> <span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Now we need to link style.css to the templates. Find <em>base.html</em> in <em>my_simple/templates</em>. Open it in your code editor and add the following line near the top of the file, right after the line that with <em>block head</em> in it.</p>
+<div class="highlight"><pre><span></span><span class="x"> &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;</span><span class="cp">{{</span> <span class="nv">SITEURL</span> <span class="cp">}}</span><span class="x">/theme/style.css&quot; /&gt;</span>
+</pre></div>
+
+
+<p>At this point you have built a simple theme with all the required templates and a simple style sheet. </p>
+<hr>
+<h2>Pelicanconf Modifications</h2>
+<p>There are a number of things you can do with your site simply by modifying pelicanconf.py.</p>
+<ul>
+<li>If you are the only author, don't create the authors page. AUTHOR_SAVE_AS = ''</li>
+<li>Simularly, if you are not using tags. TAG_SAVE_AS = ''</li>
+<li>While you are experimenting with themes you may see some unusual results. Try: LOAD_CONTENT_CACHE = False DELETE_OUTPUT_DIRECTORY = True</li>
+<li>If the site is connected to github: GITHUB_URL = 'http://github.com/you/' to make a github ribbon.</li>
+<li>If you want longer article summaries on your pages increase the value of: SUMMARY_MAX_LENGTH.</li>
+</ul>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

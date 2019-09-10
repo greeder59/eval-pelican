@@ -1,0 +1,87 @@
+/* This is a comment */
+/* Color scheme
+    #EEEEEE Background
+    #FFFFFF Background 2
+    #777777 Mid grey
+    #222222	lite grey 
+ 	#000000 white
+ 	*/
+/*This is the style for the body element. IE the whole page. */
+body {
+    font-family : georgia, calibri, serif;
+    font-size : 100% ;
+    background-color : #EEEEEE ;
+    color : #222 ;
+    width : 80% ;
+    min-width : 400px ;
+    min-height : 200px ;
+    padding : 1em ;
+    margin : 1% 10% ;
+    border : thin solid gray ;
+    border-radius : 5px ;
+    display : block ;
+}
+
+
+
+a:link    { color : blue ; text-decoration : none ;      }
+a:hover   { color : blue ; text-decoration : underline ; }
+a:visited { color : blue ;                               }
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: arial, helvetica, verdana, sans-serif ;
+	color: #222222 ;}
+
+h1 a { color : inherit !important }
+h2 a { color : inherit !important }
+h3 a { color : inherit !important }
+h4 a { color : inherit !important }
+h5 a { color : inherit !important }
+h6 a { color : inherit !important }
+
+li a { color : inherit !important }
+
+pre, blockquote {
+	font-family: monospace;
+	font-size: 0.8em;
+    margin : 2em 1em 2em 4em ;
+    border-left: 3px solid #777777;
+    padding-left: 1em;
+    background-color: #EEEEEE;
+}
+
+/*These are styles for ID tags
+*/
+
+#content {
+	font-family : georgia, calibri, serif;
+    font-size : 100% ;
+    background-color : #FFFFFF ;
+    color : #222 ;
+    width : 90% ;
+    min-width : 400px ;
+    min-height : 200px ;
+    padding : 1em ;
+    margin : 5% ;
+    border : thin solid gray ;
+    border-radius : 5px ;
+    display : block ;
+}
+
+#menu {
+	font-family: arial, helvetica, verdana, sans-serif ;
+    color: #FFFFFF ;
+    background-color: #777777 ;
+    text-decoration: none ;
+}
+
+#menu li {
+    display : inline ;
+    padding: 1px 1.5em ;
+}
+
+#post-list {
+    margin-bottom : 1em ;
+    margin-top : 1em ;
+}

@@ -53,9 +53,23 @@ Test to see if it all works by typing the new domain name into a web browser and
 
 ### Managing the CNAME file.
 
-Well, that's it. Almost. A quick glance at the gh-pages branch of the site repository, reveals that a CNAME file has been added. It was added by Github when the Custom domain setting was entered. And it needs to stay there. The astute among you will notice that this runs counter to the work flow. That is: Pelican creates the output, ghp-import places the output in the gh-pages git branch, Git push sends the branch to Github. With all this there is a risk that the CNAME file could be lost. A modification to the project will allow Pelican to create the CNAME file with each build.
+At this point you have a working custom domain. But, a quick glance at the gh-pages branch of the site repository, reveals that a CNAME file has been added. It was put there by Github when the Custom domain setting was entered. And it needs to stay there. There are two problems with it though: First: it runs counter to the work flow. That is: Pelican creates the output, ghp-import places the output in the gh-pages git branch, Git push sends the branch to Github. Second: If you try to update your site now, git will have a hissy fit about the CNAME file. It represents a change that GIT doesn't know about locally. To resolve this we need to do two things:
 
-First, create the content/extra/ directory and add a CNAME file to it. Edit the CNAME file and place the URL of your site IE: *www.eval-pelican.com*.
+ - merge the remote CNAME file to the local git repro.
+ - modify the project to allow Pelican to create the CNAME file with each build.
+
+First the merge. Switch to the local gh-pages branch then pull down the remote branch:
+
+> $ git checkout gh-pages
+
+> $ git pull origin gh-pages
+
+Then switch back to the master branch
+
+> $ git checkout master
+
+To set up Pelican to create the CNAME file on every build.
+Create the content/extra/ directory and add a CNAME file to it. Edit the CNAME file and enter the URL of your site IE: *www.eval-pelican.com*.
 
 Now tell Pelican where to find this file and to copy it to the output directory by adding the following lines to publishconf.py:
 
@@ -63,4 +77,4 @@ Now tell Pelican where to find this file and to copy it to the output directory 
 	STATIC_PATHS = ['images', 'extra/CNAME']
 	EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 ```
-And that should be it.
+And that should be it. Commit the changes to the project, use ghp-import to rebuild the gh-pages branch. Verify that the CNAME file is in the gh-pages branch and it contains the domain name
